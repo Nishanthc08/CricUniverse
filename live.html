@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylelive.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Live Scores</title>
+</head>
+
+<body>
+    <h1 class="livescr">Live Scores</h1>
+    <a href="home.html"><button type="button" class="btn btn-primary">HOME</button></a>
+    <div class='matches' id='live_loc'>
+
+    </div>
+    <script>
+        const live_api = 'https://cricapi.com/api/cricket?apikey=bJcEVd7EySasz9rd9habonDXDYM2';
+        getLiveScore();
+        async function getLiveScore() {
+            const response = await fetch(live_api);
+            const info = await response.json();
+            for (var i = 1; i < info.data.length; i++) {
+                const para = document.createElement('p');
+                para.id = `live_location${i}`;
+                para.innerHTML = 'Match ' + i + ': ' + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Match id : ' + info.data[i - 1].unique_id + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ' + info.data[i - 1].description;
+                live_loc.appendChild(para);
+            }
+        }
+    </script>
+</body>
+
+</html>

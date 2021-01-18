@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+.matches {
+    font-weight: bolder;
+    color: blue;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.heading {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(206, 206, 232, 1) 0%, rgba(0, 212, 255, 1) 100%);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.heading:hover {
+    transform: scaleX(1.1);
+}
+
+.livemat {
+    text-align: center;
+}
+
+.links {
+    list-style-type: none;
+    margin: 20px;
+    padding: 0;
+    text-align: center;
+}
+
+li a {
+    display: block;
+    padding: 50px 16px;
+}
+
+.livemat {
+    background-color: black;
+    color: white;
+}
+
+.aboutus {
+    background-color: black;
+    color: white;
+}
+
+.schedule {
+    background-color: black;
+    color: white;
+}
+
+.playerstats {
+    background-color: black;
+    color: white;
+}
+
+li a:hover {
+    color: white;
+    background-color: tomato;
+}

@@ -1,0 +1,98 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylelive.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Players' Profile</title>
+</head>
+
+<body>
+    <h1 class="livescr">Players' Profile</h1>
+    <a href="home.html"><button type="button" class="btn btn-primary">HOME</button></a>
+    <div class="search">
+        <p>Enter the player's name you want to search (only first or last name alone is also enough) : <input type="text" id="pName" value="">
+            <input type="submit" onclick='getPlayerId();'><br></p>
+        <p id='player_loc4'></p>
+    </div>
+
+    <div class='nameP' id='player_loc'>
+
+    </div>
+    <div class='nameP2' id='player_loc2'>
+
+    </div>
+    <div class='nameP3' id='player_loc3'>
+
+    </div>
+
+    <script>
+        //var player_api = 'https://cricapi.com/api/playerFinder?apikey=bJcEVd7EySasz9rd9habonDXDYM2' + '&name=' + getElementById('pName').value;
+
+        async function getPlayerId() {
+            var playerFind_api = 'https://cricapi.com/api/playerFinder?apikey=bJcEVd7EySasz9rd9habonDXDYM2' + '&name=' + document.getElementById('pName').value;
+
+            const response = await fetch(playerFind_api);
+            const info = await response.json();
+            console.log(info);
+            if (info.data.length == 0) {
+                alert('No players found.. ');
+            } else {
+                if (info.data.length == 1) {
+                    alert('1 player found.. ');
+                } else {
+                    alert(info.data.length + ' players found.. ');
+                }
+                for (var i = 1; i < info.data.length + 1; i++) {
+                    const para = document.createElement('p');
+                    para.id = `player_location${i}`;
+                    para.innerHTML = 'Player ID : ' + info.data[i - 1].pid + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Player Name : ' + info.data[i - 1].name + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp (Full name : ' + info.data[i - 1].fullName + ')';
+                    player_loc.appendChild(para);
+                }
+                const para2 = document.createElement('p');
+                para2.innerHTML = 'Enter the Id of the player you are looking for :';
+                player_loc4.appendChild(para2);
+                var input2 = document.createElement("INPUT");
+                input2.setAttribute("type", "text");
+                input2.setAttribute("id", "plid");
+                player_loc4.appendChild(input2);
+                var submit2 = document.createElement("INPUT");
+                submit2.setAttribute("type", "submit");
+                submit2.setAttribute("onclick", "getPlayerStats();");
+                player_loc4.appendChild(submit2);
+            }
+            const para4 = document.createElement('p');
+            para4.innerHTML = '<br><br><br><br>Please refresh the page to search for another player....';
+            player_loc3.appendChild(para4);
+        }
+        async function getPlayerStats() {
+            var playerStats_api = 'https://cricapi.com/api/playerStats?apikey=bJcEVd7EySasz9rd9habonDXDYM2' + '&pid=' + document.getElementById('plid').value;
+            const response = await fetch(playerStats_api);
+            const info = await response.json();
+            console.log(info);
+            var a = 50;
+            console.log(info.data.batting.listA);
+            document.getElementById("player_loc").style.display = "none";
+            var fName = document.createElement('h2');
+            fName.innerHTML = info.fullName;
+            player_loc2.appendChild(fName);
+            var img1 = document.createElement('img');
+            img1.setAttribute("src", info.imageURL);
+            img1.setAttribute("alt", 'Photo not found');
+            player_loc2.appendChild(img1);
+            const para3 = document.createElement('p');
+            para3.id = `playerStat_location`;
+            para3.innerHTML =
+                '<br><br>Country : ' + info.country +
+                '<br><br>Date of Birth : ' + info.born +
+                '<br><br>Playing Role : ' + info.playingRole +
+                '<br><br>Batting Style : ' + info.battingStyle +
+                '<br><br>Bowling Style : ' + info.bowlingStyle +
+                '<br><br>Major Teams that he has played for : ' + info.majorTeams +
+                '<br><br>Profile : ' + info.profile;
+            player_loc2.appendChild(para3);
+        }
+    </script>
+</body>
+
+</html>

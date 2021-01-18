@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.matches {
+    padding: 20px;
+    margin: auto;
+    left: 0;
+    right: 0;
+}
+
+.livescr {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(206, 206, 232, 1) 0%, rgba(0, 212, 255, 1) 100%);
+    font-family: 'Orbitron', sans-serif;
+    margin: auto;
+}
+
+.livescr:hover {
+    transform: scaleX(1.1);
+}
+
+#live_location1,
+#live_location2,
+#live_location3,
+#live_location4,
+#live_location5,
+#live_location6,
+#live_location7,
+#live_location8,
+#live_location9,
+#live_location10,
+#live_location11,
+#live_location12,
+#live_location13,
+#live_location14,
+#live_location15,
+#live_location16,
+#live_location17,
+#live_location18,
+#live_location19,
+#live_location20 {
+    padding: 20px;
+    color: black;
+}
+
+#live_location1:hover,
+#live_location2:hover,
+#live_location3:hover,
+#live_location4:hover,
+#live_location5:hover,
+#live_location6:hover,
+#live_location7:hover,
+#live_location8:hover,
+#live_location9:hover,
+#live_location10:hover,
+#live_location11:hover,
+#live_location12:hover,
+#live_location13:hover,
+#live_location14:hover,
+#live_location15:hover,
+#live_location16:hover,
+#live_location17:hover,
+#live_location18:hover,
+#live_location19:hover,
+#live_location20:hover {
+    color: white;
+    background-color: black;
+}
+
+.btn-primary {
+    float: right;
+}
+
+.search {
+    padding: 20px;
+    top: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
